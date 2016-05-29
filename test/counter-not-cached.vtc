@@ -1,4 +1,4 @@
-test "response header returned"
+test "Counter not cached"
 
 server s1 {
 	rxreq
