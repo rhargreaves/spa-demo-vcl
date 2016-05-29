@@ -3,10 +3,11 @@ test "response header returned"
 server s1 {
 	rxreq
 	expect req.url == "/counter"
-	txresp -body {foo}
+	txresp -body "foo"
+
 	rxreq
 	expect req.url == "/counter"
-	txresp -body {bar}
+	txresp -body "barbaz"
 } -start
 
 varnish v1 -vcl+backend {
@@ -17,9 +18,10 @@ client c1 {
 	txreq -url "/counter"
 	rxresp
 	expect resp.bodylen == 3
+
 	txreq -url "/counter"
 	rxresp
-	expect resp.bodylen == 3
+	expect resp.bodylen == 6
 }
 
 varnish v1 -expect cache_miss == 0
