@@ -7,7 +7,7 @@ server s1 {
 } -start
 
 varnish v1 -vcl+backend {
-	# INSERT_VCL_HERE
+	# VCL_PLACEHOLDER
 } -start
 
 client c1 {
