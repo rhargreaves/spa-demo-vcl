@@ -43,10 +43,6 @@ sub vcl_fetch {
     set beresp.ttl = 3600s;
   }
 
-  if(req.url == "/counter") {
-	set beresp.ttl = 0s;
-  }
-
   return(deliver);
 }
 
